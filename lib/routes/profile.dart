@@ -1,166 +1,173 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:traxsmart_swm_staff_app/data/img.dart';
-import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
-import 'package:traxsmart_swm_staff_app/utils/my_text.dart';
+import 'package:traxsmart_swm_staff_app/theme/app_theme.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+
 
 class ProfileRoute extends StatefulWidget {
-
-  ProfileRoute({Key? key}) : super(key: key);
+  const ProfileRoute({Key? key}) : super(key: key);
 
   @override
-  ProfileRouteState createState() => ProfileRouteState();
+  _ProfileRouteScreenState createState() => _ProfileRouteScreenState();
 }
 
-class ProfileRouteState extends State<ProfileRoute> with SingleTickerProviderStateMixin {
-
-  late BuildContext ctx;
-  late String driverName = 'Driver Name';
-  late String dutyDetails = 'Ward No:12';
+class _ProfileRouteScreenState extends State<ProfileRoute> {
+  late ThemeData theme;
+  late CustomTheme customTheme;
 
   @override
   void initState() {
+    super.initState();
+    theme = AppTheme.theme;
+    customTheme = AppTheme.customTheme;
   }
 
-  @override
-  void dispose() {
+  Widget _buildSingleRow({String? title, IconData? icon}) {
+    return Row(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.onBackground.withAlpha(20),
+            borderRadius: BorderRadius.circular(4),
+          ),
+
+          child: Icon(
+            icon,
+            color: customTheme.medicarePrimary,
+            size: 20,
+          ),
+
+          padding: new EdgeInsets.all(10.0),
+        ),
+
+        SizedBox( width: 16, ),
+
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              text: title!,
+              style: TextStyle(letterSpacing: 0.5,fontSize: 12,
+                  color: theme.colorScheme.onBackground.withAlpha(200)),
+            ),
+            textAlign: TextAlign.left,
+          ),
+        ),
+
+        SizedBox( width: 16, ),
+        Icon(
+          Icons.keyboard_arrow_right,
+          color: theme.colorScheme.onBackground.withAlpha(160),
+        ),
+      ],
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    ctx = context;
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  /*Stack(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 200,
-                        width: double.infinity,
-                        child: Image.asset(Img.get('pastelbackdrop.png'),fit: BoxFit.cover),
-                      ),
-                      Container(
-                        color: Colors.black.withOpacity(0.4),
-                        height: 200,
-                        width: double.infinity,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("Browse Through Million of Products\nin Many Category", textAlign : TextAlign.center,
-                              style: MyText.medium(context).copyWith(
-                                  color: Colors.white, fontWeight: FontWeight.bold
-                              )
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),*/
-                  /*Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                    child: Column(
-                      children: gridCategory,
-                    ),
-                  )*/
-                  SizedBox(
-                    height: 200,
-                    width: double.infinity,
-                    child: Image.asset(Img.get('geometricbackdrop.png'),fit: BoxFit.cover),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        /* Image.asset(Img.get('geometricbackdrop.png'),
-                          height: 180, width: double.infinity, fit: BoxFit.cover,
-                        ),*/
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Welcome,", style: MyText.subhead(context)!.copyWith(color: MyColors.grey_80)),
-                              Text(driverName, style: MyText.headline(context)!.copyWith(color: MyColors.grey_80)),
-                              Container(height: 5),
-                              Container(
-                                margin: const EdgeInsets.symmetric(vertical: 10),
-                                child: Text("Today's Duty", style: MyText.subhead(context)!.copyWith(color: MyColors.grey_80)),
-                              ),
-                              Text(dutyDetails, style: MyText.subhead(context)!.copyWith(color: MyColors.grey_40)),
-                              Text(dutyDetails, style: MyText.subhead(context)!.copyWith(color: MyColors.grey_40)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 15),
-                          child: const Divider(height: 1),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Tonight's availability", style: MyText.medium(context).copyWith(color: MyColors.grey_80)),
-                              Container(height: 5),
-                              Row(
-                                children: [
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("5:30PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                  Container(width: 8),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("7:30PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                  Container(width: 8),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("8:00PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: TextButton(
-                            style: TextButton.styleFrom(primary: Colors.transparent),
-                            child: const Text("RESERVE", style: TextStyle(color: MyColors.primary),),
-                            onPressed: (){},
-                          ),
-                        ),
-                        Container(height: 5)
-                      ],
-                    ),
-                  ),
-
-                ],
+      body: ListView(
+        padding: const EdgeInsets.fromLTRB(24, 52, 24, 24),
+        children: [
+          Center(
+            child: Container(
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(24),
+                ),
+                child: Image(
+                  fit: BoxFit.cover,
+                  width: 100,
+                  height: 100,
+                  image: AssetImage('assets/images/avatar_4.jpg'),
+                ),
               ),
             ),
           ),
+          // FxSpacing.height(24),
+          SizedBox( height: 24,),
+
+          RichText(
+            text: TextSpan(
+              text: "Bessie Cooper",
+              style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.8, fontSize: 17),
+            ),
+            textAlign: TextAlign.center,
+          ),
+
+          SizedBox( height: 4,),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container (
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: customTheme.medicarePrimary,
+                ),
+                height: 6,
+                width: 6,
+                child: Container(),
+              ),
+
+              SizedBox( width: 6,),
+
+              RichText(
+                  text: TextSpan(
+                    text: "Premium (9 days)",
+                    style: TextStyle( fontSize: 12.3,
+                      color: customTheme.medicarePrimary,
+                    ),
+                  )
+              )
+            ],
+          ),
+
+          SizedBox( height: 24,),
+          RichText(
+              text: TextSpan(
+                text: "General",
+                style: TextStyle(
+                  fontSize: 11,
+                  letterSpacing: 0.8,
+                  color: theme.colorScheme.onBackground.withAlpha(160),
+                ),
+              )
+          ),
+
+          SizedBox( height: 24,),
+
+          _buildSingleRow(title: 'Subscription & payment', icon: FeatherIcons.creditCard),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
+          _buildSingleRow(title: 'Profile settings', icon: FeatherIcons.user),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
+          _buildSingleRow(title: 'Password', icon: FeatherIcons.lock),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
+          _buildSingleRow(title: 'Notifications', icon: FeatherIcons.bell),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
+          _buildSingleRow(title: 'Logout', icon: FeatherIcons.logOut),
         ],
       ),
     );

@@ -1,16 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:traxsmart_swm_staff_app/data/dummy.dart';
-import 'package:traxsmart_swm_staff_app/data/img.dart';
-import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
 import 'package:traxsmart_swm_staff_app/model/base/bottom_nav.dart';
-import 'package:traxsmart_swm_staff_app/model/base/icon_details.dart';
 import 'package:traxsmart_swm_staff_app/routes/attendance.dart';
 import 'package:traxsmart_swm_staff_app/routes/home.dart';
 import 'package:traxsmart_swm_staff_app/routes/more.dart';
 import 'package:traxsmart_swm_staff_app/routes/profile.dart';
-import 'package:traxsmart_swm_staff_app/utils/my_text.dart';
+
 
 class DashboardRoute extends StatefulWidget {
 
