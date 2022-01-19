@@ -12,6 +12,9 @@ class ProfileRoute extends StatefulWidget {
 
 class _ProfileRouteScreenState extends State<ProfileRoute> {
   late ThemeData theme;
+  String _employeeName = "Sam Thomas";
+  String _jobRole = "Driver";
+  Color _status = Colors.green;
   late CustomTheme customTheme;
 
   @override
@@ -46,7 +49,7 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
             text: TextSpan(
               text: title!,
               style: TextStyle(letterSpacing: 0.5,fontSize: 12,
-                  color: theme.colorScheme.onBackground.withAlpha(200)),
+                  color: theme.colorScheme.onBackground.withAlpha(250)),
             ),
             textAlign: TextAlign.left,
           ),
@@ -65,8 +68,10 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.fromLTRB(24, 52, 24, 24),
+
+        padding: const EdgeInsets.fromLTRB(24, 24, 24, 24),
         children: [
+          SizedBox( height: 25,),
           Center(
             child: Container(
               child: ClipRRect(
@@ -82,13 +87,18 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
               ),
             ),
           ),
-          // FxSpacing.height(24),
+
           SizedBox( height: 24,),
 
           RichText(
             text: TextSpan(
-              text: "Bessie Cooper",
-              style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 0.8, fontSize: 17),
+              text: _employeeName,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.8,
+                  fontSize: 20,
+                  color: Colors.grey,
+              ),
             ),
             textAlign: TextAlign.center,
           ),
@@ -101,18 +111,19 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
               Container (
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: customTheme.medicarePrimary,
+                  color: _status,
                 ),
                 height: 6,
                 width: 6,
-                child: Container(),
+
               ),
+
 
               SizedBox( width: 6,),
 
               RichText(
                   text: TextSpan(
-                    text: "Premium (9 days)",
+                    text: _jobRole,
                     style: TextStyle( fontSize: 12.3,
                       color: customTheme.medicarePrimary,
                     ),
@@ -121,37 +132,10 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
             ],
           ),
 
-          SizedBox( height: 24,),
-          RichText(
-              text: TextSpan(
-                text: "General",
-                style: TextStyle(
-                  fontSize: 11,
-                  letterSpacing: 0.8,
-                  color: theme.colorScheme.onBackground.withAlpha(160),
-                ),
-              )
-          ),
 
-          SizedBox( height: 24,),
+          SizedBox( height: 16,),
 
-          _buildSingleRow(title: 'Subscription & payment', icon: FeatherIcons.creditCard),
-
-          SizedBox( height: 8,),
-
-          Divider(),
-
-          SizedBox( height: 8,),
-
-          _buildSingleRow(title: 'Profile settings', icon: FeatherIcons.user),
-
-          SizedBox( height: 8,),
-
-          Divider(),
-
-          SizedBox( height: 8,),
-
-          _buildSingleRow(title: 'Password', icon: FeatherIcons.lock),
+          _buildSingleRow(title: 'Documents', icon: FeatherIcons.file),
 
           SizedBox( height: 8,),
 
@@ -167,7 +151,24 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
 
           SizedBox( height: 8,),
 
+          _buildSingleRow(title: 'App Settings', icon: FeatherIcons.settings),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
+          _buildSingleRow(title: 'Password', icon: FeatherIcons.lock),
+
+          SizedBox( height: 8,),
+
+          Divider(),
+
+          SizedBox( height: 8,),
+
           _buildSingleRow(title: 'Logout', icon: FeatherIcons.logOut),
+
         ],
       ),
     );

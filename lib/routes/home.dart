@@ -5,7 +5,7 @@ import 'package:traxsmart_swm_staff_app/data/img.dart';
 import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
 import 'package:traxsmart_swm_staff_app/model/base/icon_details.dart';
 import 'package:traxsmart_swm_staff_app/utils/my_text.dart';
-
+import 'package:traxsmart_swm_staff_app/routes/employee_screen.dart';
 class HomeRoute extends StatefulWidget {
 
   HomeRoute({Key? key}) : super(key: key);
@@ -202,9 +202,16 @@ class HomeRouteState extends State<HomeRoute> with SingleTickerProviderStateMixi
                           child: TextButton(
                             style: TextButton.styleFrom(primary: Colors.transparent),
                             child: const Text("RESERVE", style: TextStyle(color: MyColors.primary),),
-                            onPressed: (){},
+                            onPressed: (){
+                              Navigator.of(context, rootNavigator: true).push(
+                                MaterialPageRoute(
+                                  builder: (context) => EmployeeScreen()),
+                                );
+                              },
+                              )
+
                           ),
-                        ),
+
                         Container(height: 5)
                       ],
                     ),
