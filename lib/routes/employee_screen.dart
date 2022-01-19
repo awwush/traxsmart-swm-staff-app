@@ -14,8 +14,8 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
 
   List<Employee> employeeList = [];
   late ThemeData theme;
-  String _employeeName = "Sam Thomas";
-  String _jobRole = "Driver";
+  // String _employeeName = "Sam Thomas";
+  // String _jobRole = "Driver";
   Color _status = Colors.green;
   late CustomTheme customTheme;
 
