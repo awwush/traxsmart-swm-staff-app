@@ -139,7 +139,7 @@ class HomeRouteState extends State<HomeRoute> with SingleTickerProviderStateMixi
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
                               Text("Welcome,", style: MyText.subhead(context)!.copyWith(color: MyColors.grey_80)),
-                              Text(driverName, style: MyText.medium(context)!.copyWith(color: MyColors.grey_80)),
+                             // Text(driverName, style: MyText.medium(context)!.copyWith(color: MyColors.grey_80)),
                               Container(height: 5),
                               Container(
                                 margin: const EdgeInsets.symmetric(vertical: 10),
