@@ -162,110 +162,155 @@ class AttendanceRouteState extends State<AttendanceRoute> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          (_counter <= 0)
-              ? Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          (_counter == 0)
+              ? Column(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: 25,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.red,
+                          ),
+                          height: 6,
+                          width: 6,
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "Off Duty!",
+                          style: TextStyle(
+                            color: customTheme.medicarePrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 3,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          width: 25,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
+                              color: customTheme.medicarePrimary,
+                            ),
+                            borderRadius: BorderRadius.circular(5.5),
+                          ),
+                          child: Text(
+                            '0',
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                        SizedBox(
                           width: 2,
-                          color: customTheme.medicarePrimary,
                         ),
-                        borderRadius: BorderRadius.circular(5.5),
-                      ),
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                        Text(
+                          ':',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: customTheme.medicarePrimary,
+                            fontSize: 15,
+                          ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Text(
-                      ':',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: customTheme.medicarePrimary,
-                        fontSize: 15,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      width: 25,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                        SizedBox(
                           width: 2,
-                          color: customTheme.medicarePrimary,
                         ),
-                        borderRadius: BorderRadius.circular(5.5),
-                      ),
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                        Container(
+                          alignment: Alignment.center,
+                          width: 25,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
+                              color: customTheme.medicarePrimary,
+                            ),
+                            borderRadius: BorderRadius.circular(5.5),
+                          ),
+                          child: Text(
+                            '0',
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Text(
-                      ':',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: customTheme.medicarePrimary,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 2,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      width: 25,
-                      height: 30,
-                      decoration: BoxDecoration(
-                        border: Border.all(
+                        SizedBox(
                           width: 2,
-                          color: customTheme.medicarePrimary,
                         ),
-                        borderRadius: BorderRadius.circular(5.5),
-                      ),
-                      child: Text(
-                        '0',
-                        style: TextStyle(
-                          color: Colors.grey.shade500,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
+                        Text(
+                          ':',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: customTheme.medicarePrimary,
+                          ),
                         ),
-                      ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          width: 25,
+                          height: 30,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              width: 2,
+                              color: customTheme.medicarePrimary,
+                            ),
+                            borderRadius: BorderRadius.circular(5.5),
+                          ),
+                          child: Text(
+                            '0',
+                            style: TextStyle(
+                              color: Colors.grey.shade500,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 )
               : Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      "On Duty!",
-                      style: TextStyle(
-                        color: customTheme.medicarePrimary,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 10,
-                      ),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.green,
+                          ),
+                          height: 6,
+                          width: 6,
+                        ),
+                        SizedBox(
+                          width: 4,
+                        ),
+                        Text(
+                          "On Duty!",
+                          style: TextStyle(
+                            color: customTheme.medicarePrimary,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
                     ),
                     SizedBox(
                       height: 3,
