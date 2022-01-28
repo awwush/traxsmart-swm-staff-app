@@ -47,21 +47,50 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-       actions: <Widget>[
-         IconButton(
-           icon: const Icon(Icons.tune_outlined),
-           tooltip: 'Filter',
-           onPressed: (){
-             _showDialog();
-           },
-         )
-       ],
-        backgroundColor: customTheme.medicarePrimary,
-      ),
-      body: ListView(
-        padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
-        children: [
+        body: ListView(
+        padding: EdgeInsets.fromLTRB(24, 38, 24, 24),
+    children: [
+    Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+    InkWell(
+    onTap: () {
+    Navigator.pop(context);
+    },
+    child: Container(
+    decoration: BoxDecoration(
+    color: theme.colorScheme.onBackground.withAlpha(13),
+    borderRadius: BorderRadius.circular(8),
+
+    ),
+    child: Icon(
+    Icons.chevron_left,
+    color: theme.colorScheme.onBackground.withAlpha(160),
+    size: 24,
+    ),
+
+    padding: new EdgeInsets.all(5.0),
+    ),
+    ),
+
+      IconButton(
+        icon: const Icon(Icons.tune_outlined),
+        tooltip: 'Filter',
+        onPressed: (){
+          _showDialog();
+        },
+        color: customTheme.medicarePrimary,
+      )
+    ],
+
+    ),
+
+    SizedBox( height: 25,),
+
+
+
+
+
           Column(
             children: _buildEmployeeList(),
           ),
@@ -75,7 +104,7 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
   List<Widget> _buildEmployeeList() {
     List<Widget> list = [];
 
-    list.add(SizedBox( width: 16, ) );
+
 
     for(int i = 0; i < employeeList.length; i++) {
       list.add(_buildSingleEmployee(employeeList[i]));
@@ -94,8 +123,9 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
           },
           child: Container(
 
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 10),
 
-            margin: const EdgeInsets.fromLTRB(24, 0, 24, 10),
+
             padding: EdgeInsets.all(16),
 
             decoration: BoxDecoration(
@@ -263,9 +293,10 @@ class _ChoiceDialogState extends State<ChoiceDialog> {
     return AlertDialog(
       title: RichText(
         text: TextSpan(
-          text: "Filter Modules",
+          text: "Filter Roles",
           style: TextStyle(
             fontWeight: FontWeight.bold,
+            color: AppTheme.customTheme.medicarePrimary,
           ),
         ),
       ),
@@ -282,7 +313,7 @@ class _ChoiceDialogState extends State<ChoiceDialog> {
             textStyle: const TextStyle(fontSize: 15),
           ),
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text("FILTER"),
+          child: const Text("APPLY"),
 
         )
       ],
