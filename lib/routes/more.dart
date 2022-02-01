@@ -1,168 +1,172 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:traxsmart_swm_staff_app/data/img.dart';
-import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
-import 'package:traxsmart_swm_staff_app/utils/my_text.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:traxsmart_swm_staff_app/routes/preferences.dart';
+import 'package:traxsmart_swm_staff_app/theme/app_theme.dart';
 
 class MoreRoute extends StatefulWidget {
-
   MoreRoute({Key? key}) : super(key: key);
 
   @override
   MoreRouteState createState() => MoreRouteState();
 }
 
-class MoreRouteState extends State<MoreRoute> with SingleTickerProviderStateMixin {
-
-  late BuildContext ctx;
-  late String driverName = 'Driver Name';
-  late String dutyDetails = 'Ward No:13';
+class MoreRouteState extends State<MoreRoute> {
+  late ThemeData theme;
+  late CustomTheme customTheme;
 
   @override
   void initState() {
-  }
-
-  @override
-  void dispose() {
+    super.initState();
+    theme = AppTheme.theme;
+    customTheme = AppTheme.customTheme;
   }
 
   @override
   Widget build(BuildContext context) {
-    ctx = context;
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  /*Stack(
-                    children: <Widget>[
-                      SizedBox(
-                        height: 200,
-                        width: double.infinity,
-                        child: Image.asset(Img.get('pastelbackdrop.png'),fit: BoxFit.cover),
-                      ),
-                      Container(
-                        color: Colors.black.withOpacity(0.4),
-                        height: 200,
-                        width: double.infinity,
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: Text("Browse Through Million of Products\nin Many Category", textAlign : TextAlign.center,
-                              style: MyText.medium(context).copyWith(
-                                  color: Colors.white, fontWeight: FontWeight.bold
-                              )
-                          ),
+      body: ListView(
+        padding: EdgeInsets.fromLTRB(24, 44, 24, 0),
+        children: [
+          SizedBox(
+            height: 8,
+          ),
+          GestureDetector(
+              child: _buildSettingsList(
+                title: 'Preferences',
+                icon: FeatherIcons.settings,
+              ),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Preferences()),
+                );
+              }),
+          SizedBox(height: 8),
+          Divider(),
+          SizedBox(height: 8),
+          _buildSettingsList(
+            title: 'Change Language',
+            icon: FeatherIcons.globe,
+          ),
+          SizedBox(
+            height: 8,
+          ),
+          Divider(),
+          SizedBox(
+            height: 8,
+          ),
+          _buildSettingsList(
+              title: 'Privacy Policy', icon: FeatherIcons.shield),
+          SizedBox(
+            height: 8,
+          ),
+          Divider(),
+          SizedBox(
+            height: 8,
+          ),
+          _buildSettingsList(
+              title: 'Terms & Conditions', icon: FeatherIcons.checkCircle),
+          SizedBox(
+            height: 8,
+          ),
+          Divider(),
+          SizedBox(
+            height: 8,
+          ),
+          _buildSettingsList(title: 'Help', icon: FeatherIcons.messageCircle),
+          SizedBox(
+            height: 8,
+          ),
+          Divider(),
+          SizedBox(
+            height: 8,
+          ),
+          _buildSettingsList(title: 'About App', icon: FeatherIcons.helpCircle),
+          SizedBox(
+            height: 8,
+          ),
+          Divider(),
+          SizedBox(
+            height: 8,
+          ),
+          SizedBox(
+            height: 135,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                children: [
+                  Text(
+                    "APP VERSION: 9.22.3579.2",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      letterSpacing: 0.5,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      IconButton(
+                        color: Colors.pink.shade900,
+                        icon: const Icon(
+                          FeatherIcons.instagram,
+                          size: 20,
                         ),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        color: Colors.green.shade900,
+                        icon: const Icon(
+                          FeatherIcons.mapPin,
+                          size: 20,
+                        ),
+                        onPressed: () {},
+                      ),
+                      IconButton(
+                        color: Colors.blue.shade900,
+                        icon: const Icon(
+                          FeatherIcons.facebook,
+                          size: 20,
+                        ),
+                        onPressed: () {},
                       ),
                     ],
-                  ),*/
-                  /*Container(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
-                    transform: Matrix4.translationValues(0.0, -30.0, 0.0),
-                    child: Column(
-                      children: gridCategory,
-                    ),
-                  )*/
-                  SizedBox(
-                    height: 200,
-                    width: double.infinity,
-                    child: Image.asset(Img.get('geometricbackdrop.png'),fit: BoxFit.cover),
-                  ),
-                  Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(6)),
-                    clipBehavior: Clip.antiAliasWithSaveLayer,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        /* Image.asset(Img.get('geometricbackdrop.png'),
-                          height: 180, width: double.infinity, fit: BoxFit.cover,
-                        ),*/
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Welcome,", style: MyText.subhead(context)!.copyWith(color: MyColors.grey_80)),
-                              Text(driverName, style: MyText.headline(context)!.copyWith(color: MyColors.grey_80)),
-                              Container(height: 5),
-                              Container(
-                                margin: const EdgeInsets.symmetric(vertical: 10),
-                                child: Text("Today's Duty", style: MyText.subhead(context)!.copyWith(color: MyColors.grey_80)),
-                              ),
-                              Text(dutyDetails, style: MyText.subhead(context)!.copyWith(color: MyColors.grey_40)),
-                              Text(dutyDetails, style: MyText.subhead(context)!.copyWith(color: MyColors.grey_40)),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 15),
-                          child: const Divider(height: 1),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text("Tonight's availability", style: MyText.medium(context).copyWith(color: MyColors.grey_80)),
-                              Container(height: 5),
-                              Row(
-                                children: [
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("5:30PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                  Container(width: 8),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("7:30PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                  Container(width: 8),
-                                  ElevatedButton(
-                                    style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey[300], elevation: 0,
-                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 20),
-                                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18.0)),
-                                    ),
-                                    child: const Text("8:00PM", style: TextStyle(color: MyColors.grey_60)),
-                                    onPressed: (){},
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 10),
-                          child: TextButton(
-                            style: TextButton.styleFrom(primary: Colors.transparent),
-                            child: const Text("RESERVE", style: TextStyle(color: MyColors.primary),),
-                            onPressed: (){},
-                          ),
-                        ),
-                        Container(height: 5)
-                      ],
-                    ),
-                  ),
-
+                  )
                 ],
               ),
-            ),
+            ],
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildSettingsList({String? title, IconData? icon}) {
+    return Row(
+      children: [
+        Icon(
+          icon,
+          size: 22,
+        ),
+        SizedBox(
+          width: 16,
+        ),
+        Expanded(
+          child: Text(
+            title!,
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 14,
+            ),
+          ),
+        ),
+        Icon(
+          Icons.keyboard_arrow_right,
+          color: theme.colorScheme.onBackground.withAlpha(250),
+        ),
+      ],
     );
   }
 }

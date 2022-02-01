@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:traxsmart_swm_staff_app/data/dummy.dart';
 import 'package:traxsmart_swm_staff_app/data/img.dart';
 import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
 import 'package:traxsmart_swm_staff_app/model/base/icon_details.dart';
@@ -25,9 +24,6 @@ class HomeRouteState extends State<HomeRoute> with SingleTickerProviderStateMixi
   void initState() {
   }
 
-  @override
-  void dispose() {
-  }
 
   Widget getItemViewGrid(IconDetail s){
     return Expanded(
@@ -80,8 +76,8 @@ class HomeRouteState extends State<HomeRoute> with SingleTickerProviderStateMixi
   @override
   Widget build(BuildContext context) {
     ctx = context;
-    List<IconDetail > listCategory = Dummy.getShoppingCategory();
-    List<Widget> gridCategory = getGridViewCategory(listCategory);
+    //List<IconDetail > listCategory = Dummy.getShoppingCategory();
+    //List<Widget> gridCategory = getGridViewCategory(listCategory);
     return Scaffold(
       body: Column(
         children: <Widget>[

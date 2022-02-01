@@ -45,20 +45,19 @@ class _ProfileRouteScreenState extends State<ProfileRoute> {
         SizedBox( width: 16, ),
 
         Expanded(
-          child: RichText(
-            text: TextSpan(
-              text: title!,
-              style: TextStyle(letterSpacing: 0.5,fontSize: 12,
-                  color: theme.colorScheme.onBackground.withAlpha(250)),
-            ),
+          child: Text(
+            title!,
             textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 13,
+            ),
           ),
         ),
 
         SizedBox( width: 16, ),
         Icon(
           Icons.keyboard_arrow_right,
-          color: theme.colorScheme.onBackground.withAlpha(160),
+          color: theme.colorScheme.onBackground.withAlpha(250),
         ),
       ],
     );

@@ -29,9 +29,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  provider: ^5.0.0
   bloc: ^8.0.2
-  flutter_bloc: ^8.0.1
   equatable: ^2.0.3
   # Icons
   flutter_feather_icons: ^2.0.0+1
@@ -43,7 +42,6 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  shared_preferences: ^2.0.11
   syncfusion_flutter_calendar: ^19.4.41
   table_calendar: ^3.0.3
   intl: ^0.17.0
@@ -52,6 +50,7 @@ dependencies:
   toggle_switch: ^1.3.0
   swipebuttonflutter:
   stop_watch_timer:
+  shared_preferences: ^2.0.5
 
 dev_dependencies:
   flutter_test:
