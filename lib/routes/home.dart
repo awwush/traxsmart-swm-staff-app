@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:traxsmart_swm_staff_app/data/img.dart';
 import 'package:traxsmart_swm_staff_app/data/my_colors.dart';
 import 'package:traxsmart_swm_staff_app/model/base/icon_details.dart';
+import 'package:traxsmart_swm_staff_app/routes/complaints.dart';
 import 'package:traxsmart_swm_staff_app/utils/my_text.dart';
 import 'package:traxsmart_swm_staff_app/routes/employee_screen.dart';
 class HomeRoute extends StatefulWidget {
@@ -208,7 +209,22 @@ class HomeRouteState extends State<HomeRoute> with SingleTickerProviderStateMixi
 
                           ),
 
-                        Container(height: 5)
+                        Container(height: 5),
+
+                        Container(
+                            margin: const EdgeInsets.symmetric(horizontal: 10),
+                            child: TextButton(
+                              style: TextButton.styleFrom(primary: Colors.transparent),
+                              child: const Text("COMPLAINTS", style: TextStyle(color: MyColors.primary),),
+                              onPressed: (){
+                                Navigator.of(context, rootNavigator: true).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => Complaints()),
+                                );
+                              },
+                            )
+
+                        ),
                       ],
                     ),
                   ),
