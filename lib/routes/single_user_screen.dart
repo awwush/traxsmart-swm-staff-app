@@ -5,9 +5,6 @@ import 'user.dart';
 
 class SingleUserScreen extends StatefulWidget {
 
-  final User user;
-  SingleUserScreen(this.user);
-
 
   @override
   _SingleUserScreenState createState() => _SingleUserScreenState();
@@ -32,7 +29,6 @@ class _SingleUserScreenState extends State<SingleUserScreen> {
     super.initState();
     theme = AppTheme.theme;
     customTheme = AppTheme.customTheme;
-    user = widget.user;
   }
 
   @override
